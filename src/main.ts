@@ -12,7 +12,7 @@ async function bootstrap() {
     await app.listen(5000);
   } else {
     const salt = Math.random().toString(16);
-    const passwordSalt = process.env.PASSWORD_API + salt;
+    const passwordSalt = process.env.PASSWORD + salt;
     const password = crypto.SHA256(passwordSalt).toString();
     await userRepository.insert({email: "aron", password: password, salt: salt, role: "admin"})
     await app.listen(5000);
