@@ -11,11 +11,11 @@ import { RoleMiddleware } from './middlewares/check.role';
 @Module({
   imports: [UserModule, TypeOrmModule.forRoot({
     type: 'postgres',
-    host: process.env.DATABASE_HOST,
-    port: parseInt(process.env.DATABASE_PORT || "", 10),
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD, 
-    database: process.env.DATABASE_NAME,
+    host: process.env.DATABASE_HOST || 'localhost',
+    port: parseInt(process.env.DATABASE_PORT || "5432", 10),
+    username: process.env.DATABASE_USERNAME || 'felipe',
+    password: process.env.DATABASE_PASSWORD || '420DevOps', 
+    database: process.env.DATABASE_NAME || 'webserver',
     entities: [User],
     synchronize: true,
   }), AuthenticationModule],
