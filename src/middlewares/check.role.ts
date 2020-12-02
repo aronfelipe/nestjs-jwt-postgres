@@ -12,7 +12,7 @@ import * as jwt from "jsonwebtoken";
 export class RoleMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: Function) {
     // Get the jwt token from the request header "auth"
-    const token = <string>req.headers["afund-api-token"];
+    const token = <string>req.headers["token"];
     let jwtPayload;
 
     // Try to validate the token and get data
