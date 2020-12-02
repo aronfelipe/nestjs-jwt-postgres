@@ -4,16 +4,18 @@ import { getRepository } from "typeorm";
 import { User } from './user/user.model';
 import * as crypto from "crypto-js";
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+import * as morgan from 'morgan';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   const userRepository = getRepository(User);
   const options = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('User authentication example')
+    .setDescription('NestJS app to authenticate users using PostgreSQL and JWT')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('users')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
